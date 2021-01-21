@@ -320,7 +320,7 @@ dens.dep.mortality <- function () {
   over.inf.hosts2 <- subset(over.inf.hosts, over.inf.hosts$Freq > density.dependence)
   if (length(over.inf.hosts$Var1) > 0){
     Parasite[Parasite$Attack.Host.TempID %in% over.inf.hosts2$Var1, Alive := rbinom(sum(Parasite$Attack.Host.TempID %in% over.inf.hosts2$Var1),1, density.dependence/over.inf.hosts2[Attack.Host.TempID, "Freq"])]
-    Parasite[is.na(Parasite$Alive), Alive := 0L] #dens.dep.mortality creates a few na's, here set to 0
+    Parasite[is.na(Parasite$Alive), Alive := 1L] #dens.dep.mortality creates na when infection size = density dependence, so these remain alive
     #update alive vector
     set(Alive.Parasites, j = "Is.Alive", value = Parasite[, Alive == 1])
   }
