@@ -222,9 +222,10 @@ senescence.function <- function() {
 infection.function <- function(){ 
   
   # parasite draws resources, dependent on virulence of parasite
-  if (sum(over.inf.hosts$Var1) > 0){
-    Host[over.inf.hosts$Var1, Infection.Size := over.inf.hosts$Var1/density.dependence] #rescales infection size, if density = density.dependance (15) -> inf.size = 1
-    Host[Alive.Hosts$Is.Alive, Resource := Resource - (Infection.Size * virulence)]
+  over.inf.hosts <- as.data.frame(table(Parasite$Attack.Host.TempID))
+  if (length(over.inf.hosts$Var1) > 0){
+    Host[Host[, .I %in% over.inf.hosts$Var1], Infection.Size := over.inf.hosts$Freq] #rescales infection size, if density = density.dependance (15) -> inf.size = 1
+    Host[Alive.Hosts$Is.Alive, Resource := Resource - ((Infection.Size/density.dependence) * virulence)]
   }
 }
 
