@@ -1,7 +1,7 @@
 #summarized results
 #####################
 library(data.table)
-results <- "/home/jonas/Documents/TheoMod/Assignment/16jan/results/"
+results <- "/home/jonas/Documents/TheoMod/Assignment/Alcon.Coevolution/results/"
 setwd(results)
 run.date <- Sys.Date()
 hostdata <- read.csv(gsub(" ", "",paste("standardrun_Host_",run.date,"_summarized_.csv")))
@@ -33,8 +33,8 @@ ggplot(data, aes(time)) +
   theme_bw()
 
 #equilibrium Host/parasite Ratio
-eqp <- mean(data$av.parasite.popsize[round(duration.days-(duration.days/10)):duration.days])
-eqh <- mean(data$av.host.popsize[round(duration.days-(duration.days/10)):duration.days])
+eqp <- mean(data$av.parasite.popsize[round(duration.years-(duration.years/10)):duration.years])
+eqh <- mean(data$av.host.popsize[round(duration.years-(duration.years/10)):duration.years])
 hoverp <- eqh/eqp
 c(eqh, eqp, hoverp)
 
