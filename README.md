@@ -1,5 +1,6 @@
 # Alcon.Coevolution
 Host-parasite coevolutionary simulation model based on the Alcon blue (Phengaris Alcon) and its two obligatory hosts (Gentiana pneumonanthe &amp; a Myrmica sp.)
+This model was adapted from https://github.com/RobertDuenner/Digital_Coevolution.
 
 Get started:
 1. Place the 4 R files (User, Functions, Run and Parameterspace) together in a directory of choice.
